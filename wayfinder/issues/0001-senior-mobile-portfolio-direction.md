@@ -26,7 +26,7 @@ A build-ready portfolio specification that fixes the personal positioning, evide
 
 ## Decisions so far
 
-<!-- Closed ticket pointers are appended here. -->
+- [Create the GitHub repository](./0010-create-github-repository.md): Public repository `diepvicuong/my-portfolio` was created, initialized locally, and pushed on `main`.
 
 ## Not yet specified
 
