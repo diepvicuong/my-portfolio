@@ -18,20 +18,20 @@ A build-ready portfolio specification that fixes the personal positioning, evide
 - Evidence standard: architecture, maintainability, performance, production reliability, end-to-end ownership, code review, mentoring, and technical leadership.
 - Portfolio shape: three flagship case studies plus a concise “More work” collection.
 - Case-study grammar: Context → Challenge → Ownership → Key decisions → Architecture → Measurable outcome → Lessons.
-- Visual starting point: **Mobile Systems Lab**—graphite/dark-blue base, cyan or electric-lime accent, mobile-device and system-layer visuals, restrained purposeful motion, no generic developer illustration.
+- Selected visual direction: **Mobile Systems Lab / Signal Console**—graphite/dark-blue base, cyan/teal accents, mobile-device and system-layer visuals, restrained purposeful motion, no generic developer illustration.
 - Brand qualities: calm, precise, credible, technically deep.
 - A professional portrait belongs in About, not as the dominant hero visual.
 - Consult `grilling`, `domain-modeling`, and `prototype` when their ticket types require them.
-- The UI prototype is a required human-in-the-loop preview checkpoint; the information architecture and implementation choices remain blocked until the user reviews the variants.
+- The approved prototype is a primary-source reference only; production implementation must be rewritten rather than merged directly from the throwaway branch.
 
 ## Decisions so far
 
-- [Create the GitHub repository](./0010-create-github-repository.md): Public repository `diepvicuong/my-portfolio` was created, initialized locally, and pushed on `main`.
+- [Create the GitHub repository](https://github.com/diepvicuong/my-portfolio/issues/10): Public repository `diepvicuong/my-portfolio` was created, initialized locally, and pushed on `main`.
+- [Prototype the Mobile Systems Lab direction](https://github.com/diepvicuong/my-portfolio/issues/6): Selected A+ Signal Console as the production visual direction after comparing the A/B/C and high-fidelity A+/C+ prototypes.
 
 ## Not yet specified
 
 - The precise asset list for each flagship case study; this depends on which projects are selected and what may be disclosed.
-- Responsive composition and motion behaviors inside the Mobile Systems Lab concept; these depend on the visual prototype.
 - Final framework, hosting, content model, analytics, and deployment workflow; these depend on the approved experience and information architecture.
 - The exact SEO, accessibility, performance, browser-support, and analytics acceptance criteria; these depend on implementation constraints.
 
