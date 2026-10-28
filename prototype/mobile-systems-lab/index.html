@@ -151,6 +151,105 @@
       .variant-c .step p { margin: 0; color: #8b919b; font-size: .84rem; line-height: 1.55; }
       .variant-c .step:last-child { padding-bottom: 0; }
 
+      /* High-fidelity shared UI for A+ and C+. */
+      .sample-note { display: inline-flex; align-items: center; gap: 7px; color: #78818b; font: 9px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+      .sample-note::before { width: 5px; height: 5px; border-radius: 50%; background: currentColor; content: ''; }
+      .hf-section { padding: 105px 0; border-top: 1px solid rgba(255,255,255,.12); }
+      .hf-section-head { display: grid; grid-template-columns: .72fr 1.28fr; gap: 60px; align-items: end; margin-bottom: 48px; }
+      .hf-section-head h2 { max-width: 780px; margin: 0; font-size: clamp(2.4rem, 5vw, 5rem); letter-spacing: -.075em; line-height: .94; }
+      .hf-section-head p { max-width: 500px; margin: 18px 0 0; color: #969faa; line-height: 1.7; }
+      .metric-strip { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; overflow: hidden; background: rgba(255,255,255,.035); }
+      .metric-cell { min-height: 118px; padding: 22px; border-right: 1px solid rgba(255,255,255,.12); }
+      .metric-cell:last-child { border-right: 0; }
+      .metric-cell strong { display: block; margin-bottom: 16px; color: #f4f6f7; font-size: 2rem; letter-spacing: -.06em; }
+      .metric-cell span { color: #87909b; font: 10px var(--mono); line-height: 1.45; text-transform: uppercase; }
+      .case-file { display: grid; grid-template-columns: .95fr 1.05fr; gap: 0; min-height: 520px; margin-bottom: 24px; overflow: hidden; border: 1px solid rgba(255,255,255,.13); border-radius: 18px; background: rgba(255,255,255,.04); }
+      .case-file:nth-child(even) .case-visual { order: 2; }
+      .case-visual { position: relative; display: grid; min-height: 520px; place-items: center; overflow: hidden; background: radial-gradient(circle at 50% 30%, rgba(142,244,223,.16), transparent 18rem), #10171b; }
+      .case-visual::before { position: absolute; inset: 0; opacity: .16; background-image: linear-gradient(rgba(255,255,255,.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.15) 1px, transparent 1px); background-size: 42px 42px; content: ''; }
+      .case-copy { display: flex; flex-direction: column; justify-content: space-between; padding: 42px; }
+      .case-copy h3 { max-width: 520px; margin: 18px 0; font-size: clamp(2rem, 4vw, 3.8rem); letter-spacing: -.065em; line-height: .95; }
+      .case-copy > p { max-width: 520px; margin: 0; color: #9ca6b0; line-height: 1.7; }
+      .case-meta { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 38px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.12); }
+      .case-meta span { color: #717b86; font: 9px var(--mono); text-transform: uppercase; }
+      .case-meta strong { display: block; margin-top: 7px; color: #dce1e4; font-size: .82rem; font-weight: 550; line-height: 1.35; }
+      .phone-real { position: relative; z-index: 2; width: 224px; height: 452px; padding: 9px; border: 1px solid rgba(255,255,255,.22); border-radius: 34px; background: #080a0c; box-shadow: 0 28px 75px rgba(0,0,0,.48); transform: rotate(-4deg); }
+      .phone-real.alt { transform: rotate(5deg); }
+      .phone-notch { position: absolute; z-index: 2; top: 15px; left: 50%; width: 78px; height: 19px; border-radius: 999px; background: #080a0c; transform: translateX(-50%); }
+      .phone-ui { height: 100%; overflow: hidden; border-radius: 26px; color: #172025; background: #eaf5f1; }
+      .phone-status { display: flex; justify-content: space-between; padding: 14px 14px 7px; font: 7px var(--mono); }
+      .phone-appbar { display: flex; align-items: center; justify-content: space-between; padding: 15px; }
+      .phone-appbar strong { font-size: 1rem; letter-spacing: -.04em; }
+      .avatar-dot { width: 29px; height: 29px; border-radius: 50%; background: linear-gradient(135deg, #0b756b, #70e2ce); }
+      .phone-hero-card { margin: 0 13px; padding: 18px; border-radius: 17px; color: white; background: linear-gradient(140deg, #0c3534, #116e67); }
+      .phone-hero-card small { font: 7px var(--mono); text-transform: uppercase; opacity: .7; }
+      .phone-hero-card b { display: block; margin: 19px 0 7px; font-size: 1.65rem; letter-spacing: -.08em; }
+      .phone-hero-card p { margin: 0; font-size: .6rem; opacity: .75; }
+      .phone-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px; }
+      .phone-mini { min-height: 82px; padding: 12px; border-radius: 13px; background: white; box-shadow: 0 6px 20px rgba(20,60,55,.08); }
+      .phone-mini span { color: #6b7b79; font-size: .52rem; }
+      .phone-mini strong { display: block; margin-top: 22px; font-size: .83rem; }
+      .float-chip { position: absolute; z-index: 3; display: flex; align-items: center; gap: 8px; padding: 10px 12px; border: 1px solid rgba(142,244,223,.27); border-radius: 9px; color: #c3fff4; background: rgba(8,15,17,.84); font: 9px var(--mono); box-shadow: 0 12px 35px rgba(0,0,0,.28); backdrop-filter: blur(12px); }
+      .float-chip.one { top: 18%; left: 8%; } .float-chip.two { right: 5%; bottom: 19%; }
+      .float-chip i { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
+      .architecture-board { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 28px; border: 1px solid rgba(255,255,255,.12); border-radius: 15px; background: rgba(255,255,255,.035); }
+      .architecture-node { position: relative; min-height: 150px; padding: 20px; border: 1px solid rgba(255,255,255,.1); border-radius: 11px; background: #11161c; }
+      .architecture-node:not(:last-child)::after { position: absolute; top: 50%; right: -13px; z-index: 2; color: var(--cyan); content: '→'; transform: translateY(-50%); }
+      .architecture-node span { color: var(--cyan); font: 9px var(--mono); text-transform: uppercase; }
+      .architecture-node h3 { margin: 34px 0 8px; font-size: 1rem; }
+      .architecture-node p { margin: 0; color: #77818c; font-size: .74rem; line-height: 1.5; }
+      .experience-grid { display: grid; grid-template-columns: .65fr 1.35fr; gap: 70px; }
+      .experience-list { border-top: 1px solid rgba(255,255,255,.12); }
+      .experience-row { display: grid; grid-template-columns: 130px 1fr; gap: 24px; padding: 29px 0; border-bottom: 1px solid rgba(255,255,255,.12); }
+      .experience-row time { color: #76808b; font: 10px var(--mono); }
+      .experience-row h3 { margin: 0 0 7px; font-size: 1.08rem; }
+      .experience-row p { margin: 0; color: #8b949e; font-size: .83rem; line-height: 1.6; }
+      .stack-matrix { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+      .stack-card { min-height: 145px; padding: 20px; border: 1px solid rgba(255,255,255,.11); border-radius: 10px; background: rgba(255,255,255,.035); }
+      .stack-card span { color: #76808a; font: 9px var(--mono); text-transform: uppercase; }
+      .stack-card strong { display: block; margin-top: 45px; font-size: 1rem; }
+      .about-panel { display: grid; grid-template-columns: .7fr 1.3fr; min-height: 430px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); border-radius: 18px; background: rgba(255,255,255,.035); }
+      .portrait-placeholder { position: relative; display: grid; place-items: end center; overflow: hidden; background: radial-gradient(circle at 50% 30%, rgba(142,244,223,.26), transparent 15rem), #11171b; }
+      .portrait-placeholder::before { width: 180px; height: 240px; border-radius: 100px 100px 20px 20px; background: linear-gradient(#29343a, #171e22); box-shadow: 0 -105px 0 -57px #29343a; content: ''; }
+      .portrait-placeholder span { position: absolute; bottom: 18px; color: #6f7a83; font: 9px var(--mono); text-transform: uppercase; }
+      .about-copy { display: flex; flex-direction: column; justify-content: center; padding: 48px; }
+      .about-copy h2 { max-width: 620px; margin: 18px 0 22px; font-size: clamp(2.1rem, 4vw, 4.2rem); letter-spacing: -.07em; line-height: .98; }
+      .about-copy p { max-width: 560px; color: #909aa4; line-height: 1.75; }
+
+      /* C+ uses the same content but a cinematic narrative instead of case cards. */
+      .c-proof { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: -44px; border-radius: 14px; overflow: hidden; background: rgba(212,255,95,.2); }
+      .c-proof .metric-cell { border: 0; background: #10120f; }
+      .c-proof .metric-cell strong { color: var(--lime); }
+      .orbit-case { display: grid; grid-template-columns: .75fr 1.25fr; gap: 90px; align-items: center; min-height: 680px; padding: 90px 0; border-top: 1px solid rgba(255,255,255,.12); }
+      .orbit-case:nth-child(even) .orbit-case-copy { order: 2; }
+      .orbit-case-copy h3 { margin: 18px 0 24px; font-size: clamp(2.6rem, 5.4vw, 5.6rem); letter-spacing: -.085em; line-height: .89; }
+      .orbit-case-copy p { max-width: 520px; color: #969ca5; line-height: 1.75; }
+      .orbit-impact { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 32px; }
+      .orbit-impact div { padding: 16px; border: 1px solid rgba(212,255,95,.16); border-radius: 9px; background: rgba(212,255,95,.035); }
+      .orbit-impact span { color: #798078; font: 8px var(--mono); text-transform: uppercase; }
+      .orbit-impact strong { display: block; margin-top: 8px; color: #e5f8b5; font-size: .82rem; }
+      .orbit-scene { position: relative; display: grid; min-height: 590px; place-items: center; }
+      .orbit-scene::before, .orbit-scene::after { position: absolute; width: 450px; aspect-ratio: 1; border: 1px solid rgba(212,255,95,.18); border-radius: 50%; content: ''; }
+      .orbit-scene::after { width: 330px; border-style: dashed; animation: orbitSpin 32s linear infinite; }
+      .orbit-scene .phone-real { transform: rotate(7deg); }
+      .orbit-layer { position: absolute; z-index: 3; min-width: 150px; padding: 12px 14px; border: 1px solid rgba(212,255,95,.25); border-radius: 8px; color: #dfff8a; background: rgba(8,10,8,.86); font: 9px var(--mono); text-transform: uppercase; backdrop-filter: blur(12px); }
+      .orbit-layer.one { top: 14%; right: 0; } .orbit-layer.two { bottom: 22%; left: 0; } .orbit-layer.three { right: 4%; bottom: 9%; }
+      .c-system-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid rgba(255,255,255,.13); border-bottom: 1px solid rgba(255,255,255,.13); }
+      .c-system-flow .architecture-node { border: 0; border-right: 1px solid rgba(255,255,255,.12); border-radius: 0; background: transparent; }
+      .c-system-flow .architecture-node:last-child { border-right: 0; }
+      .c-system-flow .architecture-node span { color: var(--lime); }
+      .c-system-flow .architecture-node:not(:last-child)::after { color: var(--lime); }
+      .c-timeline { position: relative; max-width: 850px; margin-left: auto; }
+      .c-timeline::before { position: absolute; top: 0; bottom: 0; left: 7px; width: 1px; background: rgba(212,255,95,.3); content: ''; }
+      .c-timeline .experience-row { grid-template-columns: 105px 1fr; padding-left: 35px; border-bottom-color: rgba(255,255,255,.1); }
+      .c-timeline .experience-row::before { position: absolute; left: 3px; width: 9px; height: 9px; margin-top: 3px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 18px rgba(212,255,95,.5); content: ''; }
+      .c-stack .stack-card { border-color: rgba(212,255,95,.13); background: rgba(212,255,95,.025); }
+      .c-stack .stack-card strong { color: #e5f8b5; }
+      .contact-panel { display: grid; grid-template-columns: 1.3fr .7fr; gap: 40px; align-items: end; padding: 56px; border: 1px solid rgba(255,255,255,.13); border-radius: 18px; background: linear-gradient(135deg, rgba(142,244,223,.12), rgba(255,255,255,.03)); }
+      .contact-panel h2 { max-width: 760px; margin: 16px 0 0; font-size: clamp(2.6rem, 6vw, 6.2rem); letter-spacing: -.085em; line-height: .9; }
+      .contact-actions { display: grid; gap: 9px; }
+      @keyframes orbitSpin { to { transform: rotate(360deg); } }
+
       .switcher { position: fixed; z-index: 120; bottom: 20px; left: 50%; display: flex; align-items: center; gap: 10px; padding: 8px 10px; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; color: white; background: rgba(10,12,17,.87); box-shadow: 0 12px 34px rgba(0,0,0,.28); transform: translateX(-50%); backdrop-filter: blur(15px); }
       .switcher button { display: grid; width: 31px; height: 31px; place-items: center; border-radius: 50%; color: white; background: rgba(255,255,255,.11); font-size: 1.1rem; }
       .switcher button:hover { background: rgba(255,255,255,.22); }
@@ -172,6 +271,14 @@
         .variant-b .case p { grid-column: 2 / -1; }
         .variant-b .case .case-link { grid-column: 3; grid-row: 1; }
         .variant-b .manifesto, .variant-c .path { grid-template-columns: 1fr; gap: 34px; }
+        .hf-section-head, .case-file, .experience-grid, .about-panel, .orbit-case, .contact-panel { grid-template-columns: 1fr; }
+        .case-file:nth-child(even) .case-visual, .orbit-case:nth-child(even) .orbit-case-copy { order: initial; }
+        .metric-strip, .c-proof { grid-template-columns: repeat(2, 1fr); }
+        .metric-cell:nth-child(2) { border-right: 0; }
+        .metric-cell:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,.12); }
+        .architecture-board, .c-system-flow, .stack-matrix { grid-template-columns: repeat(2, 1fr); }
+        .architecture-node:nth-child(2)::after { display: none; }
+        .orbit-case { gap: 30px; }
       }
       @media (max-width: 550px) {
         .prototype-flag { top: 8px; padding: 6px 8px; font-size: 8px; }
@@ -192,6 +299,21 @@
         .variant-b .case { grid-template-columns: 32px 1fr; }
         .variant-b .case .case-link { grid-column: 2; grid-row: auto; justify-self: start; }
         .variant-b .case p { grid-column: 2; }
+        .hf-section { padding: 78px 0; }
+        .hf-section-head { gap: 24px; margin-bottom: 34px; }
+        .case-copy { padding: 28px 22px; }
+        .case-visual { min-height: 470px; }
+        .case-meta, .architecture-board, .c-system-flow, .stack-matrix { grid-template-columns: 1fr; }
+        .architecture-node:not(:last-child)::after { top: auto; right: 50%; bottom: -18px; transform: translateX(50%) rotate(90deg); }
+        .experience-row { grid-template-columns: 1fr; gap: 8px; }
+        .about-copy { padding: 32px 23px; }
+        .portrait-placeholder { min-height: 350px; }
+        .orbit-scene { min-height: 520px; }
+        .orbit-scene::before { width: 350px; }
+        .orbit-scene::after { width: 270px; }
+        .orbit-layer { min-width: 0; font-size: 8px; }
+        .orbit-impact { grid-template-columns: 1fr; }
+        .contact-panel { padding: 32px 23px; }
         .switcher { width: calc(100% - 28px); justify-content: space-between; }
         .switcher .current { min-width: 0; flex: 1; }
       }
@@ -207,19 +329,49 @@
     </div>
     <script>
       // Prototype question: which of three radically different compositions best communicates Senior Mobile Engineer credibility?
+      const sample = {
+        metrics: [
+          { value: '5+', label: 'Years building mobile products', verified: true },
+          { value: '12', label: 'Sample · production releases', verified: false },
+          { value: '3', label: 'Sample · flagship systems', verified: false },
+          { value: 'E2E', label: 'Ownership · brief to release', verified: true },
+        ],
+        projects: [
+          { index: '01', signal: 'Architecture', title: 'Field operations, rebuilt for scale', context: 'A multi-role mobile product had grown around feature-by-feature state and fragile release paths.', decision: 'Separated domain state from presentation, introduced explicit offline boundaries and made API contracts visible.', outcome: 'Sample · 35% fewer release regressions', stack: 'Flutter · BLoC · REST · CI/CD', theme: 'field' },
+          { index: '02', signal: 'Performance', title: 'The critical path, made immediate', context: 'A high-frequency customer flow felt slow even when the backend response was acceptable.', decision: 'Profiled the interaction end to end, removed redundant rebuilds and redesigned optimistic feedback.', outcome: 'Sample · 42% faster perceived flow', stack: 'Kotlin · Coroutines · Compose', theme: 'speed' },
+          { index: '03', signal: 'Ownership', title: 'From uncertain brief to shipped product', context: 'A new product surface needed technical shape, delivery confidence and a maintainable team handoff.', decision: 'Turned product assumptions into a small release slice, established architecture seams and coached delivery.', outcome: 'Sample · first release in 10 weeks', stack: 'Flutter · Firebase · Analytics', theme: 'launch' },
+        ],
+        experience: [
+          { period: '2023 — Now', role: 'Senior Mobile Engineer', detail: 'Owned mobile architecture, production delivery, code review and mentoring across Flutter and Android work.' },
+          { period: '2021 — 2023', role: 'Mobile Engineer', detail: 'Shipped customer-facing features, improved app reliability and introduced clearer state boundaries.' },
+          { period: '2019 — 2021', role: 'Android Developer', detail: 'Built native Android foundations and learned the operational realities behind a polished interface.' },
+        ],
+        stack: ['Flutter / Dart', 'Kotlin / Android', 'State architecture', 'REST / Firebase', 'Testing strategy', 'CI / CD', 'Performance', 'Code review'],
+      };
+
+      const metricsMarkup = (className = 'metric-strip') => `<div class="${className}">${sample.metrics.map(metric => `<div class="metric-cell"><strong>${metric.value}</strong><span>${metric.label}</span></div>`).join('')}</div>`;
+      const phoneMarkup = (project, alt = false) => `<div class="phone-real ${alt ? 'alt' : ''}"><div class="phone-notch"></div><div class="phone-ui"><div class="phone-status"><span>9:41</span><span>● ● ▰</span></div><div class="phone-appbar"><strong>${project.theme === 'speed' ? 'Live activity' : project.theme === 'launch' ? 'Your workspace' : 'Today'}</strong><span class="avatar-dot"></span></div><div class="phone-hero-card"><small>${project.signal} / production</small><b>${project.theme === 'speed' ? '112 ms' : project.theme === 'launch' ? 'Release 1.0' : '24 tasks'}</b><p>${project.theme === 'speed' ? 'Critical interaction latency' : project.theme === 'launch' ? 'Ready for staged rollout' : 'Field operations in sync'}</p></div><div class="phone-cards"><div class="phone-mini"><span>System health</span><strong>Stable</strong></div><div class="phone-mini"><span>Latest signal</span><strong>${project.theme === 'speed' ? 'Fast' : project.theme === 'launch' ? 'Live' : 'Synced'}</strong></div><div class="phone-mini"><span>Ownership</span><strong>End to end</strong></div><div class="phone-mini"><span>Release</span><strong>Verified</strong></div></div></div></div>`;
+      const caseMetaMarkup = project => `<div class="case-meta"><div><span>Decision</span><strong>${project.decision}</strong></div><div><span>Stack</span><strong>${project.stack}</strong></div><div><span>Outcome</span><strong>${project.outcome}</strong></div></div>`;
+      const experienceMarkup = (className = 'experience-list') => `<div class="${className}">${sample.experience.map(item => `<article class="experience-row"><time>${item.period}</time><div><h3>${item.role}</h3><p>${item.detail}</p></div></article>`).join('')}</div>`;
+      const stackMarkup = (className = 'stack-matrix') => `<div class="${className}">${sample.stack.map((item, index) => `<div class="stack-card"><span>0${index + 1} / capability</span><strong>${item}</strong></div>`).join('')}</div>`;
+
       const variants = {
         a: {
-          key: 'A', name: 'Signal Console', render: () => `
+          key: 'A+', name: 'Signal Console · realistic', render: () => `
             <section class="variant variant-a">
               <div class="shell">
-                <header class="topbar"><a class="brand" href="#top"><span class="brand-mark">CD</span> Cuong Diep</a><nav><a href="#work">Work</a><a href="#systems">Systems</a><a href="#contact">Contact</a></nav><span class="micro">HCMC · GMT+7</span></header>
+                <header class="topbar"><a class="brand" href="#top"><span class="brand-mark">CD</span> Cuong Diep</a><nav><a href="#work">Work</a><a href="#systems">Approach</a><a href="#experience">Experience</a><a href="#about">About</a><a href="#contact">Contact</a></nav><span class="micro">HCMC · GMT+7</span></header>
                 <div id="top" class="hero">
-                  <div><span class="eyebrow">Senior Mobile Engineer</span><h1 class="display">I build mobile systems that <em>hold up.</em></h1><p class="body-copy">Flutter and Android engineer with 5+ years of turning product constraints into reliable experiences—from first interaction to production release.</p><div class="tags" style="margin-top:22px"><span class="tag">Flutter</span><span class="tag">Android Native</span><span class="tag">Architecture</span><span class="tag">Production delivery</span></div><div class="actions"><a class="button primary" href="#work">Explore selected work <span>↘</span></a><a class="button" href="#contact">Start a conversation</a></div><div class="signal-grid"><div class="signal"><span>Years shipping</span><strong>05+</strong></div><div class="signal"><span>Core surface</span><strong>Mobile</strong></div><div class="signal"><span>Thinking in</span><strong>Systems</strong></div><div class="signal"><span>Available for</span><strong>Senior roles</strong></div></div></div>
-                  <div class="console"><div class="console-head"><span>cuong/mobile-systems</span><span class="live">SYSTEMS ONLINE</span></div><div class="device"><div class="device-top"><span>release / 07.24</span><span>v3.8.1</span></div><div class="device-title">Make it feel<br />inevitable.</div><p class="device-sub">A product surface is the visible edge of a deeper system.</p><div class="chart" aria-label="Illustrative release signal"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="device-footer"><span>latency / 112ms</span><span>stability / 99.9%</span></div></div></div>
+                  <div><span class="eyebrow">Senior Mobile Engineer · Flutter & Android</span><h1 class="display">I build mobile systems that <em>hold up.</em></h1><p class="body-copy">5+ years turning product constraints into reliable mobile experiences—from architecture and native integration to production release.</p><div class="tags" style="margin-top:22px"><span class="tag">Flutter</span><span class="tag">Android Native</span><span class="tag">Architecture</span><span class="tag">Performance</span></div><div class="actions"><a class="button primary" href="#work">Explore case studies <span>↘</span></a><a class="button" href="#contact">Contact me</a></div><p class="sample-note" style="margin-top:23px">Prototype content · sample metrics are labelled</p></div>
+                  <div class="console"><div class="console-head"><span>cuong/mobile-systems</span><span class="live">SYSTEMS ONLINE</span></div><div class="device"><div class="device-top"><span>release / 07.24</span><span>v3.8.1</span></div><div class="device-title">Make it feel<br />inevitable.</div><p class="device-sub">A product surface is the visible edge of a deeper system.</p><div class="chart" aria-label="Illustrative release signal"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="device-footer"><span>latency / sample 112ms</span><span>stability / sample 99.9%</span></div></div></div>
                 </div>
-                <section id="work" class="section"><div class="section-head"><div><span class="eyebrow">Selected work</span><h2>Proof, not just a stack.</h2></div><span class="micro">03 flagship case studies</span></div><div class="project-grid"><article class="project"><span class="micro">01 · Architecture</span><h3>Multi-surface field operations</h3><p>Reframed a growing mobile product around resilient state, clear boundaries and a release path teams could trust.</p></article><article class="project"><span class="micro">02 · Performance</span><h3>Fast where it matters</h3><p>Untangled the slow path between intent, network and interface.</p></article><article class="project"><span class="micro">03 · Ownership</span><h3>From brief to build</h3><p>Connected product decisions to a maintainable shipping rhythm.</p></article></div></section>
-                <section id="systems" class="section"><div class="section-head"><div><span class="eyebrow">How I work</span><h2>Clarity is a technical advantage.</h2></div></div><p class="body-copy">I make architecture visible, keep the mobile surface honest about its backend contracts, and leave teams with systems they can extend.</p></section>
-                <section id="contact" class="section"><span class="eyebrow">Contact</span><h2 style="margin:17px 0 28px;font-size:clamp(2.5rem,6vw,6rem);letter-spacing:-.07em">Have a hard mobile problem?</h2><a class="button primary" href="mailto:hello@example.com">hello@example.com ↗</a></section>
+                ${metricsMarkup()}
+                <section id="work" class="hf-section"><div class="hf-section-head"><div><span class="eyebrow">Selected work</span><p class="sample-note" style="margin-top:16px">03 realistic case-study placeholders</p></div><div><h2>Proof, not just a stack.</h2><p>Each story shows the problem, the engineering decision and the outcome—not only screenshots and framework names.</p></div></div><div>${sample.projects.map((project, index) => `<article class="case-file"><div class="case-visual">${phoneMarkup(project, index === 1)}<span class="float-chip one"><i></i>${project.signal} signal</span><span class="float-chip two"><i></i>release verified</span></div><div class="case-copy"><div><span class="micro">${project.index} / ${project.signal}</span><h3>${project.title}</h3><p>${project.context}</p></div>${caseMetaMarkup(project)}</div></article>`).join('')}</div></section>
+                <section id="systems" class="hf-section"><div class="hf-section-head"><div><span class="eyebrow">Engineering approach</span></div><div><h2>Clarity is a technical advantage.</h2><p>I make the path from product intent to production observable, testable and easy for a team to extend.</p></div></div><div class="architecture-board"><article class="architecture-node"><span>01 / Product</span><h3>Frame the signal</h3><p>User intent, product constraint and the smallest valuable release.</p></article><article class="architecture-node"><span>02 / Domain</span><h3>Model ownership</h3><p>Explicit state, boundaries and failure behavior.</p></article><article class="architecture-node"><span>03 / Surface</span><h3>Design feedback</h3><p>Responsive UI, native affordances and accessible motion.</p></article><article class="architecture-node"><span>04 / Release</span><h3>Close the loop</h3><p>Tests, telemetry, staged rollout and production learning.</p></article></div></section>
+                <section id="experience" class="hf-section"><div class="experience-grid"><div><span class="eyebrow">Experience</span><h2 style="margin:18px 0;font-size:clamp(2.4rem,5vw,4.8rem);letter-spacing:-.075em;line-height:.95">Five years across the mobile stack.</h2><p class="sample-note">Company names and detailed impact added later</p></div>${experienceMarkup()}</div></section>
+                <section id="stack" class="hf-section"><div class="hf-section-head"><div><span class="eyebrow">Core stack</span></div><div><h2>Tools chosen for the system.</h2><p>Mobile depth first, with the backend and delivery capabilities needed to ship end to end.</p></div></div>${stackMarkup()}</section>
+                <section id="about" class="hf-section"><div class="about-panel"><div class="portrait-placeholder"><span>Professional portrait placeholder</span></div><div class="about-copy"><span class="eyebrow">About</span><h2>Senior means making the next decision easier.</h2><p>I bring product context into technical work, make constraints visible and help teams ship with confidence through architecture, review and mentoring.</p><div class="tags" style="margin-top:18px"><span class="tag">Technical leadership</span><span class="tag">Code review</span><span class="tag">Mentoring</span></div></div></div></section>
+                <section id="contact" class="hf-section"><div class="contact-panel"><div><span class="eyebrow">Contact</span><h2>Have a hard mobile problem?</h2></div><div class="contact-actions"><a class="button primary" href="mailto:hello@example.com">Email me ↗</a><a class="button" href="#">LinkedIn ↗</a><a class="button" href="#">GitHub ↗</a><a class="button" href="#">Download CV ↓</a><p class="sample-note">Links are placeholders</p></div></div></section>
               </div>
             </section>`,
         },
@@ -236,14 +388,18 @@
             </section>`,
         },
         c: {
-          key: 'C', name: 'Orbit Stack', render: () => `
+          key: 'C+', name: 'Orbit Stack · realistic', render: () => `
             <section class="variant variant-c">
               <div class="shell stage">
-                <header class="topbar"><a class="brand" href="#top"><span class="brand-mark">CD</span> Cuong Diep</a><nav><a href="#path">The path</a><a href="#work">Work</a><a href="#contact">Connect</a></nav><span class="micro">BUILD / SHIP / LEARN</span></header>
-                <div id="top" class="hero"><div><span class="eyebrow" style="color:var(--lime)">Senior Mobile Engineer</span><h1 class="display">The app is only the <span>surface.</span></h1><p class="body-copy">I design and ship the systems beneath it—Flutter and Android experiences that stay reliable as the product, team and traffic grow.</p><div class="actions"><a class="button primary" style="color:var(--ink);background:var(--lime);border-color:var(--lime)" href="#work">Enter the lab <span>↘</span></a><a class="button" href="#contact">Contact</a></div></div><div class="orbit"><div class="orbit-ring"></div><div class="phone"><div class="phone-screen"><small>mobile / 05 years</small><h2>Ship<br />with<br />intent.</h2><p>Architecture, interaction and delivery in one orbit.</p><div class="phone-bar"></div></div></div><span class="orbit-label one">state → surface</span><span class="orbit-label two">api → trust</span><span class="orbit-label three">release / stable</span></div></div>
-                <section id="path" class="path"><div><span class="eyebrow" style="color:var(--lime)">The path</span><h2>Good work has a shape.</h2><p class="path-copy">A simple loop keeps the engineering honest: understand the signal, design the system, make the experience feel inevitable.</p></div><div class="steps"><article class="step"><span class="step-num">01 / SIGNAL</span><div><h3>Understand the real problem</h3><p>Requirements, constraints and the moment where a user decides whether to trust the product.</p></div></article><article class="step"><span class="step-num">02 / SYSTEM</span><div><h3>Choose the smallest durable shape</h3><p>Boundaries and state that make the next feature easier, not just the current one possible.</p></div></article><article class="step"><span class="step-num">03 / SURFACE</span><div><h3>Ship the feeling, measure the truth</h3><p>Performance, reliability and feedback close the loop after release.</p></div></article></div></section>
-                <section id="work" class="path" style="margin-top:110px"><div><span class="eyebrow" style="color:var(--lime)">Selected orbit</span><h2>Three systems I’m proud of.</h2></div><div class="steps"><article class="step"><span class="step-num">A / 2024</span><div><h3>Field operations platform</h3><p>Multi-role workflows, offline-aware interaction and a release system built for change.</p></div></article><article class="step"><span class="step-num">B / 2023</span><div><h3>Realtime customer surface</h3><p>A performance-led rebuild that made the critical path feel instant.</p></div></article><article class="step"><span class="step-num">C / 2022</span><div><h3>From prototype to product</h3><p>Turned an uncertain idea into a mobile experience a team could own.</p></div></article></div></section>
-                <section id="contact" class="path" style="margin-top:110px"><div><span class="eyebrow" style="color:var(--lime)">Connect</span><h2>Let’s build the next orbit.</h2></div><div><p class="path-copy">Open to senior mobile roles and difficult product problems.</p><a class="button primary" style="color:var(--ink);background:var(--lime);border-color:var(--lime);margin-top:12px" href="mailto:hello@example.com">hello@example.com ↗</a></div></section>
+                <header class="topbar"><a class="brand" href="#top"><span class="brand-mark">CD</span> Cuong Diep</a><nav><a href="#work">Work</a><a href="#path">System</a><a href="#experience">Experience</a><a href="#about">About</a><a href="#contact">Connect</a></nav><span class="micro">BUILD / SHIP / LEARN</span></header>
+                <div id="top" class="hero"><div><span class="eyebrow" style="color:var(--lime)">Senior Mobile Engineer · Flutter & Android</span><h1 class="display">The app is only the <span>surface.</span></h1><p class="body-copy">I design and ship the systems beneath it—mobile experiences that stay reliable as the product, team and traffic grow.</p><div class="actions"><a class="button primary" style="color:var(--ink);background:var(--lime);border-color:var(--lime)" href="#work">Explore the work <span>↘</span></a><a class="button" href="#contact">Contact me</a></div><p class="sample-note" style="margin-top:23px">Prototype content · sample metrics are labelled</p></div><div class="orbit-scene"><div class="orbit-ring"></div>${phoneMarkup(sample.projects[0], true)}<span class="orbit-layer one">state → surface</span><span class="orbit-layer two">api → trust</span><span class="orbit-layer three">release → learn</span></div></div>
+                ${metricsMarkup('c-proof')}
+                <section id="work" class="hf-section"><div class="hf-section-head"><div><span class="eyebrow" style="color:var(--lime)">Selected orbit</span><p class="sample-note" style="margin-top:16px">03 realistic case-study placeholders</p></div><div><h2>Three systems. Three hard decisions.</h2><p>The layout follows each project from problem to system to surface to impact.</p></div></div>${sample.projects.map((project, index) => `<article class="orbit-case"><div class="orbit-case-copy"><span class="eyebrow" style="color:var(--lime)">${project.index} / ${project.signal}</span><h3>${project.title}</h3><p>${project.context}</p><div class="orbit-impact"><div><span>System decision</span><strong>${project.decision}</strong></div><div><span>Outcome</span><strong>${project.outcome}</strong></div></div><div class="tags" style="margin-top:18px"><span class="tag">${project.stack}</span></div></div><div class="orbit-scene">${phoneMarkup(project, index % 2 === 1)}<span class="orbit-layer one">problem / mapped</span><span class="orbit-layer two">system / stable</span><span class="orbit-layer three">impact / observed</span></div></article>`).join('')}</section>
+                <section id="path" class="hf-section"><div class="hf-section-head"><div><span class="eyebrow" style="color:var(--lime)">Engineering system</span></div><div><h2>Good work has a shape.</h2><p>A repeatable path keeps the engineering honest from product signal through production learning.</p></div></div><div class="c-system-flow"><article class="architecture-node"><span>01 / Signal</span><h3>Understand</h3><p>User intent and the smallest valuable release.</p></article><article class="architecture-node"><span>02 / System</span><h3>Model</h3><p>Ownership, state and failure boundaries.</p></article><article class="architecture-node"><span>03 / Surface</span><h3>Express</h3><p>Fast feedback and native interaction.</p></article><article class="architecture-node"><span>04 / Impact</span><h3>Learn</h3><p>Telemetry, rollout and iteration.</p></article></div></section>
+                <section id="experience" class="hf-section"><div class="hf-section-head"><div><span class="eyebrow" style="color:var(--lime)">Experience</span></div><div><h2>Five years in motion.</h2><p class="sample-note">Company names and detailed impact added later</p></div></div>${experienceMarkup('c-timeline')}</section>
+                <section id="stack" class="hf-section c-stack"><div class="hf-section-head"><div><span class="eyebrow" style="color:var(--lime)">Core stack</span></div><div><h2>Mobile depth, delivery range.</h2><p>Tools are shown as capabilities, not a logo wall.</p></div></div>${stackMarkup('stack-matrix')}</section>
+                <section id="about" class="hf-section"><div class="about-panel" style="border-color:rgba(212,255,95,.16);background:rgba(212,255,95,.025)"><div class="portrait-placeholder" style="background:radial-gradient(circle at 50% 30%,rgba(212,255,95,.25),transparent 15rem),#11140f"><span>Professional portrait placeholder</span></div><div class="about-copy"><span class="eyebrow" style="color:var(--lime)">About</span><h2>Engineering is how I make uncertainty smaller.</h2><p>I connect product intent, mobile architecture and team delivery—then make the decisions visible enough for others to extend.</p><div class="tags" style="margin-top:18px"><span class="tag">Technical leadership</span><span class="tag">Code review</span><span class="tag">Mentoring</span></div></div></div></section>
+                <section id="contact" class="hf-section"><div class="contact-panel" style="background:linear-gradient(135deg,rgba(212,255,95,.11),rgba(255,255,255,.02));border-color:rgba(212,255,95,.19)"><div><span class="eyebrow" style="color:var(--lime)">Connect</span><h2>Let’s build the next orbit.</h2></div><div class="contact-actions"><a class="button primary" style="color:var(--ink);background:var(--lime);border-color:var(--lime)" href="mailto:hello@example.com">Email me ↗</a><a class="button" href="#">LinkedIn ↗</a><a class="button" href="#">GitHub ↗</a><a class="button" href="#">Download CV ↓</a><p class="sample-note">Links are placeholders</p></div></div></section>
               </div>
             </section>`,
         },
