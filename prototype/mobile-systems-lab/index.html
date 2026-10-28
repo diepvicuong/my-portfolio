@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Throwaway UI prototype for Cuong Diep's Senior Mobile Engineer portfolio." />
+    <title>Mobile Systems Lab · Prototype</title>
+    <style>
+      :root {
+        --ink: #101217;
+        --paper: #f1f0ea;
+        --muted: #9ca3ad;
+        --line: rgba(255, 255, 255, 0.14);
+        --panel: rgba(255, 255, 255, 0.07);
+        --cyan: #8ef4df;
+        --lime: #d4ff5f;
+        --blue: #6678ff;
+        --serif: Georgia, 'Times New Roman', serif;
+        --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; min-width: 320px; background: #0d1015; color: white; font-family: var(--sans); }
+      button, a { font: inherit; }
+      a { color: inherit; text-decoration: none; }
+      button { border: 0; cursor: pointer; }
+      .prototype-flag { position: fixed; z-index: 100; top: 14px; left: 50%; transform: translateX(-50%); padding: 7px 11px; border: 1px solid rgba(255,255,255,.23); border-radius: 999px; color: #e6e8eb; background: rgba(5,7,10,.72); font: 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; backdrop-filter: blur(12px); }
+      .app { min-height: 100vh; overflow: hidden; }
+      .variant { min-height: 100vh; }
+      .shell { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+      .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--cyan); font: 11px var(--mono); letter-spacing: .15em; text-transform: uppercase; }
+      .eyebrow::before { width: 7px; height: 7px; border-radius: 50%; background: currentColor; box-shadow: 0 0 20px currentColor; content: ''; }
+      .micro { color: var(--muted); font: 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+      .display { margin: 0; font-size: clamp(3.2rem, 8vw, 7.9rem); font-weight: 650; letter-spacing: -.075em; line-height: .91; }
+      .body-copy { max-width: 560px; color: #b7bec8; font-size: 1.04rem; line-height: 1.75; }
+      .button { display: inline-flex; align-items: center; gap: 12px; padding: 13px 17px; border: 1px solid rgba(255,255,255,.18); border-radius: 9px; color: white; background: rgba(255,255,255,.07); font-size: .85rem; font-weight: 650; transition: transform .2s ease, background .2s ease, border-color .2s ease; }
+      .button:hover { transform: translateY(-2px); border-color: var(--cyan); background: rgba(142,244,223,.13); }
+      .button.primary { border-color: var(--cyan); color: #091312; background: var(--cyan); }
+      .button.primary:hover { background: #c2fff2; }
+      .button.dark { color: var(--ink); background: var(--ink); border-color: var(--ink); }
+      .button.dark:hover { color: white; background: #262b36; }
+      .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+      .tag { padding: 7px 9px; border: 1px solid rgba(255,255,255,.13); border-radius: 5px; color: #d3d8dd; background: rgba(255,255,255,.05); font: 11px var(--mono); }
+
+      /* Variant A — Signal Console: a precise split-screen systems dashboard. */
+      .variant-a { background: radial-gradient(circle at 78% 12%, rgba(67, 174, 161, .15), transparent 29rem), #0d1015; }
+      .variant-a .topbar { display: flex; align-items: center; justify-content: space-between; height: 78px; border-bottom: 1px solid var(--line); }
+      .variant-a .brand { display: flex; align-items: center; gap: 10px; font-weight: 650; }
+      .variant-a .brand-mark { display: grid; width: 31px; height: 31px; place-items: center; border: 1px solid var(--cyan); border-radius: 7px; color: var(--cyan); font: 11px var(--mono); }
+      .variant-a nav { display: flex; gap: 24px; color: #a5acb6; font: 11px var(--mono); text-transform: uppercase; }
+      .variant-a nav a:hover { color: var(--cyan); }
+      .variant-a .hero { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr); align-items: center; gap: 70px; min-height: 730px; padding: 100px 0 110px; }
+      .variant-a .hero h1 { max-width: 730px; margin-top: 24px; }
+      .variant-a .hero h1 em { color: var(--cyan); font-style: normal; }
+      .variant-a .body-copy { margin: 28px 0 0; }
+      .variant-a .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
+      .variant-a .signal-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 9px; margin-top: 46px; }
+      .variant-a .signal { padding: 14px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.03); }
+      .variant-a .signal strong { display: block; margin-top: 8px; color: #f7f8f9; font-size: 1.05rem; }
+      .variant-a .signal span { color: #7e8794; font: 10px var(--mono); text-transform: uppercase; }
+      .variant-a .console { position: relative; padding: 14px; border: 1px solid rgba(142,244,223,.3); border-radius: 20px; background: rgba(18, 25, 29, .85); box-shadow: 0 30px 90px rgba(0,0,0,.33), 0 0 70px rgba(142,244,223,.08); }
+      .variant-a .console::before { position: absolute; top: -50px; right: -30px; width: 160px; height: 160px; border: 1px solid rgba(142,244,223,.17); border-radius: 50%; content: ''; }
+      .variant-a .console-head { display: flex; justify-content: space-between; padding: 6px 4px 13px; color: #8c969e; font: 10px var(--mono); }
+      .variant-a .live { display: inline-flex; align-items: center; gap: 6px; color: var(--cyan); }
+      .variant-a .live::before { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); content: ''; }
+      .variant-a .device { position: relative; min-height: 475px; overflow: hidden; padding: 28px 23px; border-radius: 16px; background: linear-gradient(148deg, #1c2c30, #0c1114 54%, #15272b); }
+      .variant-a .device::after { position: absolute; right: -100px; bottom: -100px; width: 300px; height: 300px; border: 1px solid rgba(142,244,223,.2); border-radius: 50%; box-shadow: 0 0 0 33px rgba(142,244,223,.04), 0 0 0 66px rgba(142,244,223,.025); content: ''; }
+      .variant-a .device-top { display: flex; align-items: center; justify-content: space-between; color: #9ab6b3; font: 10px var(--mono); }
+      .variant-a .device-title { margin: 69px 0 10px; font-size: 2.3rem; font-weight: 620; letter-spacing: -.06em; }
+      .variant-a .device-sub { max-width: 230px; color: #9dafb0; font-size: .8rem; line-height: 1.6; }
+      .variant-a .chart { display: flex; align-items: end; gap: 7px; height: 110px; margin-top: 40px; }
+      .variant-a .chart i { flex: 1; border-radius: 3px 3px 0 0; background: linear-gradient(#8ef4df, rgba(142,244,223,.1)); opacity: .83; }
+      .variant-a .chart i:nth-child(1) { height: 28%; } .variant-a .chart i:nth-child(2) { height: 45%; } .variant-a .chart i:nth-child(3) { height: 35%; } .variant-a .chart i:nth-child(4) { height: 68%; } .variant-a .chart i:nth-child(5) { height: 52%; } .variant-a .chart i:nth-child(6) { height: 85%; } .variant-a .chart i:nth-child(7) { height: 72%; } .variant-a .chart i:nth-child(8) { height: 100%; }
+      .variant-a .device-footer { position: absolute; right: 24px; bottom: 21px; left: 24px; display: flex; justify-content: space-between; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.12); color: #7d9996; font: 10px var(--mono); }
+      .variant-a .section { padding: 90px 0; border-top: 1px solid var(--line); }
+      .variant-a .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 32px; }
+      .variant-a .section h2 { max-width: 600px; margin: 13px 0 0; font-size: clamp(2rem, 4vw, 3.9rem); letter-spacing: -.06em; line-height: .98; }
+      .variant-a .project-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 14px; }
+      .variant-a .project { min-height: 270px; padding: 24px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+      .variant-a .project:first-child { min-height: 420px; background: linear-gradient(140deg, rgba(142,244,223,.14), rgba(255,255,255,.03) 47%); }
+      .variant-a .project h3 { margin: 80px 0 9px; font-size: 1.6rem; letter-spacing: -.05em; }
+      .variant-a .project:not(:first-child) h3 { margin-top: 40px; }
+      .variant-a .project p { max-width: 390px; margin: 0; color: #9ca6b1; line-height: 1.6; }
+
+      /* Variant B — Field Notes: editorial, light, case-study first. */
+      .variant-b { color: var(--ink); background: var(--paper); }
+      .variant-b .shell { width: min(1240px, calc(100% - 56px)); }
+      .variant-b .topbar { display: flex; align-items: center; justify-content: space-between; height: 92px; border-bottom: 1px solid rgba(16,18,23,.18); }
+      .variant-b .brand { font: 650 1rem var(--mono); letter-spacing: -.05em; }
+      .variant-b nav { display: flex; gap: 25px; color: #59606a; font: 11px var(--mono); text-transform: uppercase; }
+      .variant-b nav a:hover { color: var(--ink); }
+      .variant-b .hero { display: grid; grid-template-columns: .88fr 1.12fr; gap: 80px; padding: 110px 0 120px; }
+      .variant-b .hero .eyebrow { color: #5e6cff; }
+      .variant-b .hero h1 { max-width: 560px; margin-top: 24px; font: 500 clamp(3.5rem, 8vw, 8.5rem)/.83 var(--serif); letter-spacing: -.09em; }
+      .variant-b .hero h1 em { color: #5e6cff; font-style: italic; }
+      .variant-b .body-copy { margin: 32px 0 0; color: #535a64; }
+      .variant-b .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 33px; }
+      .variant-b .hero-notes { align-self: end; padding-bottom: 12px; }
+      .variant-b .hero-notes p { max-width: 410px; margin: 0 0 45px; color: #454b54; font: 500 clamp(1.45rem, 2.5vw, 2.3rem)/1.13 var(--serif); letter-spacing: -.045em; }
+      .variant-b .note-line { display: flex; justify-content: space-between; padding: 13px 0; border-top: 1px solid rgba(16,18,23,.16); color: #636a74; font: 11px var(--mono); }
+      .variant-b .note-line strong { color: var(--ink); font-weight: 500; }
+      .variant-b .case-section { padding: 74px 0 120px; border-top: 1px solid rgba(16,18,23,.18); }
+      .variant-b .case-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 48px; }
+      .variant-b .case-head h2 { margin: 0; font: 500 clamp(2.4rem, 5vw, 5.6rem)/.9 var(--serif); letter-spacing: -.08em; }
+      .variant-b .case-head span { color: #666d75; font: 11px var(--mono); }
+      .variant-b .case-list { border-top: 1px solid rgba(16,18,23,.18); }
+      .variant-b .case { display: grid; grid-template-columns: 80px minmax(180px, .75fr) 1.25fr 120px; gap: 28px; align-items: start; padding: 28px 0; border-bottom: 1px solid rgba(16,18,23,.18); transition: padding .2s ease, background .2s ease; }
+      .variant-b .case:hover { padding-right: 16px; padding-left: 16px; background: rgba(255,255,255,.55); }
+      .variant-b .case-index { color: #737a82; font: 11px var(--mono); }
+      .variant-b .case h3 { margin: 0; font: 500 clamp(1.4rem, 2.2vw, 2.2rem) var(--serif); letter-spacing: -.045em; }
+      .variant-b .case p { margin: 0; color: #565e67; font-size: .85rem; line-height: 1.65; }
+      .variant-b .case .case-link { justify-self: end; color: #5e6cff; font: 11px var(--mono); text-transform: uppercase; }
+      .variant-b .manifesto { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 94px 0 0; }
+      .variant-b .manifesto h2 { margin: 0; font: 500 clamp(2.3rem, 4vw, 4.2rem)/.95 var(--serif); letter-spacing: -.07em; }
+      .variant-b .manifesto p { max-width: 390px; margin: 0; color: #535a64; font: 1.1rem/1.65 var(--serif); }
+
+      /* Variant C — Orbit Stack: immersive visual stage with a vertical system path. */
+      .variant-c { background: #08090d; }
+      .variant-c .stage { position: relative; min-height: 100vh; padding: 35px 0 100px; }
+      .variant-c .stage::before { position: absolute; top: -20vh; right: -12vw; width: 65vw; height: 65vw; border: 1px solid rgba(212,255,95,.16); border-radius: 50%; box-shadow: 0 0 0 70px rgba(212,255,95,.025), 0 0 0 140px rgba(212,255,95,.016); content: ''; pointer-events: none; }
+      .variant-c .topbar { display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
+      .variant-c .brand { display: flex; align-items: center; gap: 12px; font-size: .9rem; font-weight: 650; }
+      .variant-c .brand-mark { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; color: var(--ink); background: var(--lime); font: 11px var(--mono); }
+      .variant-c nav { display: flex; gap: 22px; color: #8e929b; font: 11px var(--mono); text-transform: uppercase; }
+      .variant-c nav a:hover { color: var(--lime); }
+      .variant-c .hero { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr .95fr; align-items: center; gap: 80px; min-height: 700px; padding: 75px 0 115px; }
+      .variant-c .hero h1 { max-width: 680px; margin-top: 25px; font-size: clamp(3.3rem, 7.7vw, 8.4rem); }
+      .variant-c .hero h1 span { display: block; color: var(--lime); }
+      .variant-c .body-copy { margin-top: 32px; }
+      .variant-c .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
+      .variant-c .orbit { position: relative; display: grid; min-height: 540px; place-items: center; }
+      .variant-c .orbit-ring { position: absolute; width: min(38vw, 470px); aspect-ratio: 1; border: 1px dashed rgba(212,255,95,.28); border-radius: 50%; transform: rotate(-19deg); }
+      .variant-c .orbit-ring::after { position: absolute; top: 8%; left: 9%; width: 12px; height: 12px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 26px var(--lime); content: ''; }
+      .variant-c .phone { position: relative; z-index: 1; width: min(220px, 50vw); height: 445px; padding: 10px; border: 1px solid rgba(212,255,95,.45); border-radius: 32px; background: #171c1c; box-shadow: 22px 34px 70px rgba(0,0,0,.5), 0 0 70px rgba(212,255,95,.11); transform: rotate(9deg); }
+      .variant-c .phone-screen { height: 100%; padding: 22px 17px; overflow: hidden; border-radius: 23px; background: linear-gradient(162deg, #b7d745, #26301a 52%, #0d1110); color: #10140e; }
+      .variant-c .phone-screen small { font: 9px var(--mono); text-transform: uppercase; opacity: .8; }
+      .variant-c .phone-screen h2 { margin: 90px 0 13px; font-size: 2.2rem; letter-spacing: -.09em; line-height: .9; }
+      .variant-c .phone-screen p { max-width: 150px; font-size: .72rem; line-height: 1.5; }
+      .variant-c .phone-bar { height: 4px; margin-top: 70px; border-radius: 9px; background: #11160c; opacity: .55; }
+      .variant-c .orbit-label { position: absolute; z-index: 2; padding: 10px 12px; border: 1px solid rgba(212,255,95,.3); border-radius: 7px; color: var(--lime); background: rgba(8,9,13,.8); font: 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; backdrop-filter: blur(10px); }
+      .variant-c .orbit-label.one { top: 15%; right: 3%; } .variant-c .orbit-label.two { bottom: 17%; left: 1%; } .variant-c .orbit-label.three { right: 5%; bottom: 7%; color: #b7bac4; border-color: rgba(255,255,255,.14); }
+      .variant-c .path { position: relative; z-index: 1; display: grid; grid-template-columns: .7fr 1.3fr; gap: 70px; padding: 74px 0 0; border-top: 1px solid rgba(255,255,255,.13); }
+      .variant-c .path h2 { margin: 0; font-size: clamp(2rem, 4.3vw, 4.5rem); letter-spacing: -.08em; line-height: .92; }
+      .variant-c .path-copy { color: #a5aab4; line-height: 1.7; }
+      .variant-c .steps { display: grid; gap: 0; }
+      .variant-c .step { display: grid; grid-template-columns: 55px 1fr; gap: 18px; padding: 0 0 31px; }
+      .variant-c .step-num { color: var(--lime); font: 11px var(--mono); }
+      .variant-c .step h3 { margin: 0 0 7px; font-size: 1rem; }
+      .variant-c .step p { margin: 0; color: #8b919b; font-size: .84rem; line-height: 1.55; }
+      .variant-c .step:last-child { padding-bottom: 0; }
+
+      .switcher { position: fixed; z-index: 120; bottom: 20px; left: 50%; display: flex; align-items: center; gap: 10px; padding: 8px 10px; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; color: white; background: rgba(10,12,17,.87); box-shadow: 0 12px 34px rgba(0,0,0,.28); transform: translateX(-50%); backdrop-filter: blur(15px); }
+      .switcher button { display: grid; width: 31px; height: 31px; place-items: center; border-radius: 50%; color: white; background: rgba(255,255,255,.11); font-size: 1.1rem; }
+      .switcher button:hover { background: rgba(255,255,255,.22); }
+      .switcher .current { min-width: 175px; text-align: center; font: 10px var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+      .switcher .current strong { color: var(--cyan); }
+      .switcher .hint { display: none; margin-left: 4px; color: #8c939e; font-size: 9px; }
+
+      @media (min-width: 900px) { .switcher .hint { display: inline; } }
+      @media (max-width: 850px) {
+        .shell, .variant-b .shell { width: min(100% - 34px, 650px); }
+        .variant-a .hero, .variant-b .hero, .variant-c .hero { grid-template-columns: 1fr; gap: 52px; padding: 80px 0 95px; }
+        .variant-a .hero { min-height: auto; }
+        .variant-a .console { max-width: 560px; }
+        .variant-b .hero-notes { max-width: 520px; }
+        .variant-c .orbit { min-height: 520px; }
+        .variant-c .orbit-ring { width: min(85vw, 470px); }
+        .variant-a .project-grid { grid-template-columns: 1fr; }
+        .variant-b .case { grid-template-columns: 45px 1fr auto; gap: 16px; }
+        .variant-b .case p { grid-column: 2 / -1; }
+        .variant-b .case .case-link { grid-column: 3; grid-row: 1; }
+        .variant-b .manifesto, .variant-c .path { grid-template-columns: 1fr; gap: 34px; }
+      }
+      @media (max-width: 550px) {
+        .prototype-flag { top: 8px; padding: 6px 8px; font-size: 8px; }
+        .variant-a nav, .variant-b nav, .variant-c nav { display: none; }
+        .variant-a .topbar, .variant-b .topbar { height: 68px; }
+        .variant-a .hero h1, .variant-c .hero h1 { font-size: clamp(3.15rem, 17vw, 5.4rem); }
+        .variant-b .hero h1 { font-size: clamp(3.8rem, 19vw, 6.5rem); }
+        .variant-a .device { min-height: 415px; }
+        .variant-a .device-title { margin-top: 50px; }
+        .variant-a .signal-grid { margin-top: 32px; }
+        .variant-c .orbit { min-height: 430px; }
+        .variant-c .phone { height: 370px; }
+        .variant-c .phone-screen h2 { margin-top: 70px; }
+        .variant-c .orbit-label { font-size: 8px; }
+        .variant-c .orbit-label.one { top: 7%; right: 0; }
+        .variant-c .orbit-label.two { bottom: 8%; left: 0; }
+        .variant-c .orbit-label.three { right: 0; bottom: 0; }
+        .variant-b .case { grid-template-columns: 32px 1fr; }
+        .variant-b .case .case-link { grid-column: 2; grid-row: auto; justify-self: start; }
+        .variant-b .case p { grid-column: 2; }
+        .switcher { width: calc(100% - 28px); justify-content: space-between; }
+        .switcher .current { min-width: 0; flex: 1; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="prototype-flag">Prototype · throwaway UI · review before layout lock</div>
+    <main id="app" class="app"></main>
+    <div class="switcher" aria-label="Prototype variant switcher">
+      <button id="previous" type="button" aria-label="Previous variant">←</button>
+      <div class="current"><strong id="variant-key">A</strong> · <span id="variant-name">Signal Console</span><span class="hint">← → to switch</span></div>
+      <button id="next" type="button" aria-label="Next variant">→</button>
+    </div>
+    <script>
+      // Prototype question: which of three radically different compositions best communicates Senior Mobile Engineer credibility?
+      const variants = {
+        a: {
+          key: 'A', name: 'Signal Console', render: () => `
+            <section class="variant variant-a">
+              <div class="shell">
+                <header class="topbar"><a class="brand" href="#top"><span class="brand-mark">CD</span> Cuong Diep</a><nav><a href="#work">Work</a><a href="#systems">Systems</a><a href="#contact">Contact</a></nav><span class="micro">HCMC · GMT+7</span></header>
+                <div id="top" class="hero">
+                  <div><span class="eyebrow">Senior Mobile Engineer</span><h1 class="display">I build mobile systems that <em>hold up.</em></h1><p class="body-copy">Flutter and Android engineer with 5+ years of turning product constraints into reliable experiences—from first interaction to production release.</p><div class="tags" style="margin-top:22px"><span class="tag">Flutter</span><span class="tag">Android Native</span><span class="tag">Architecture</span><span class="tag">Production delivery</span></div><div class="actions"><a class="button primary" href="#work">Explore selected work <span>↘</span></a><a class="button" href="#contact">Start a conversation</a></div><div class="signal-grid"><div class="signal"><span>Years shipping</span><strong>05+</strong></div><div class="signal"><span>Core surface</span><strong>Mobile</strong></div><div class="signal"><span>Thinking in</span><strong>Systems</strong></div><div class="signal"><span>Available for</span><strong>Senior roles</strong></div></div></div>
+                  <div class="console"><div class="console-head"><span>cuong/mobile-systems</span><span class="live">SYSTEMS ONLINE</span></div><div class="device"><div class="device-top"><span>release / 07.24</span><span>v3.8.1</span></div><div class="device-title">Make it feel<br />inevitable.</div><p class="device-sub">A product surface is the visible edge of a deeper system.</p><div class="chart" aria-label="Illustrative release signal"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="device-footer"><span>latency / 112ms</span><span>stability / 99.9%</span></div></div></div>
+                </div>
+                <section id="work" class="section"><div class="section-head"><div><span class="eyebrow">Selected work</span><h2>Proof, not just a stack.</h2></div><span class="micro">03 flagship case studies</span></div><div class="project-grid"><article class="project"><span class="micro">01 · Architecture</span><h3>Multi-surface field operations</h3><p>Reframed a growing mobile product around resilient state, clear boundaries and a release path teams could trust.</p></article><article class="project"><span class="micro">02 · Performance</span><h3>Fast where it matters</h3><p>Untangled the slow path between intent, network and interface.</p></article><article class="project"><span class="micro">03 · Ownership</span><h3>From brief to build</h3><p>Connected product decisions to a maintainable shipping rhythm.</p></article></div></section>
+                <section id="systems" class="section"><div class="section-head"><div><span class="eyebrow">How I work</span><h2>Clarity is a technical advantage.</h2></div></div><p class="body-copy">I make architecture visible, keep the mobile surface honest about its backend contracts, and leave teams with systems they can extend.</p></section>
+                <section id="contact" class="section"><span class="eyebrow">Contact</span><h2 style="margin:17px 0 28px;font-size:clamp(2.5rem,6vw,6rem);letter-spacing:-.07em">Have a hard mobile problem?</h2><a class="button primary" href="mailto:hello@example.com">hello@example.com ↗</a></section>
+              </div>
+            </section>`,
+        },
+        b: {
+          key: 'B', name: 'Field Notes', render: () => `
+            <section class="variant variant-b">
+              <div class="shell">
+                <header class="topbar"><a class="brand" href="#top">CD / MOBILE SYSTEMS</a><nav><a href="#work">Case studies</a><a href="#about">About</a><a href="#contact">Contact</a></nav><span class="micro">01—05</span></header>
+                <div id="top" class="hero"><div><span class="eyebrow">Flutter · Android · Product thinking</span><h1 class="display">Software with a <em>point of view.</em></h1><p class="body-copy">I am Cuong Diep, a Senior Mobile Engineer. I care about the invisible decisions that make a product feel calm, fast and dependable.</p><div class="actions"><a class="button dark" href="#work">Read the work ↘</a><a class="button" href="#contact" style="color:var(--ink);border-color:rgba(16,18,23,.24);background:transparent">Say hello</a></div></div><aside class="hero-notes"><p>“The best mobile experience is a system of good decisions, made visible.”</p><div class="note-line"><span>Now</span><strong>Open to senior mobile roles</strong></div><div class="note-line"><span>Based</span><strong>Ho Chi Minh City · Vietnam</strong></div><div class="note-line"><span>Focus</span><strong>Flutter / Android Native</strong></div></aside></div>
+                <section id="work" class="case-section"><div class="case-head"><h2>Selected work</h2><span>01—03 / deep dives</span></div><div class="case-list"><article class="case"><span class="case-index">01</span><h3>From feature to system</h3><p>How I reshaped a mobile product around explicit ownership, scalable state and safer releases.</p><a class="case-link" href="#">Read ↗</a></article><article class="case"><span class="case-index">02</span><h3>Finding the slow path</h3><p>A performance story about making a complex interaction feel immediate without hiding the trade-offs.</p><a class="case-link" href="#">Read ↗</a></article><article class="case"><span class="case-index">03</span><h3>Shipping with a team</h3><p>Technical leadership in the small: review, mentoring and the decisions that compound over time.</p><a class="case-link" href="#">Read ↗</a></article></div><div class="manifesto"><h2>Senior means making the next decision easier.</h2><p>I bring product context into technical work, make constraints explicit and build foundations that help other people move faster.</p></div></section>
+                <section id="about" class="case-section"><div class="case-head"><h2>About</h2><span>02—05 / the person</span></div><div class="manifesto" style="padding-top:0"><h2>Mobile is where intention becomes touch.</h2><p>That proximity keeps me curious: about performance, accessibility, motion, and the architecture underneath a single tap.</p></div></section>
+                <section id="contact" class="case-section"><div class="case-head"><h2>Let’s talk</h2><span>03—05 / contact</span></div><a class="button dark" href="mailto:hello@example.com">hello@example.com ↗</a></section>
+              </div>
+            </section>`,
+        },
+        c: {
+          key: 'C', name: 'Orbit Stack', render: () => `
+            <section class="variant variant-c">
+              <div class="shell stage">
+                <header class="topbar"><a class="brand" href="#top"><span class="brand-mark">CD</span> Cuong Diep</a><nav><a href="#path">The path</a><a href="#work">Work</a><a href="#contact">Connect</a></nav><span class="micro">BUILD / SHIP / LEARN</span></header>
+                <div id="top" class="hero"><div><span class="eyebrow" style="color:var(--lime)">Senior Mobile Engineer</span><h1 class="display">The app is only the <span>surface.</span></h1><p class="body-copy">I design and ship the systems beneath it—Flutter and Android experiences that stay reliable as the product, team and traffic grow.</p><div class="actions"><a class="button primary" style="color:var(--ink);background:var(--lime);border-color:var(--lime)" href="#work">Enter the lab <span>↘</span></a><a class="button" href="#contact">Contact</a></div></div><div class="orbit"><div class="orbit-ring"></div><div class="phone"><div class="phone-screen"><small>mobile / 05 years</small><h2>Ship<br />with<br />intent.</h2><p>Architecture, interaction and delivery in one orbit.</p><div class="phone-bar"></div></div></div><span class="orbit-label one">state → surface</span><span class="orbit-label two">api → trust</span><span class="orbit-label three">release / stable</span></div></div>
+                <section id="path" class="path"><div><span class="eyebrow" style="color:var(--lime)">The path</span><h2>Good work has a shape.</h2><p class="path-copy">A simple loop keeps the engineering honest: understand the signal, design the system, make the experience feel inevitable.</p></div><div class="steps"><article class="step"><span class="step-num">01 / SIGNAL</span><div><h3>Understand the real problem</h3><p>Requirements, constraints and the moment where a user decides whether to trust the product.</p></div></article><article class="step"><span class="step-num">02 / SYSTEM</span><div><h3>Choose the smallest durable shape</h3><p>Boundaries and state that make the next feature easier, not just the current one possible.</p></div></article><article class="step"><span class="step-num">03 / SURFACE</span><div><h3>Ship the feeling, measure the truth</h3><p>Performance, reliability and feedback close the loop after release.</p></div></article></div></section>
+                <section id="work" class="path" style="margin-top:110px"><div><span class="eyebrow" style="color:var(--lime)">Selected orbit</span><h2>Three systems I’m proud of.</h2></div><div class="steps"><article class="step"><span class="step-num">A / 2024</span><div><h3>Field operations platform</h3><p>Multi-role workflows, offline-aware interaction and a release system built for change.</p></div></article><article class="step"><span class="step-num">B / 2023</span><div><h3>Realtime customer surface</h3><p>A performance-led rebuild that made the critical path feel instant.</p></div></article><article class="step"><span class="step-num">C / 2022</span><div><h3>From prototype to product</h3><p>Turned an uncertain idea into a mobile experience a team could own.</p></div></article></div></section>
+                <section id="contact" class="path" style="margin-top:110px"><div><span class="eyebrow" style="color:var(--lime)">Connect</span><h2>Let’s build the next orbit.</h2></div><div><p class="path-copy">Open to senior mobile roles and difficult product problems.</p><a class="button primary" style="color:var(--ink);background:var(--lime);border-color:var(--lime);margin-top:12px" href="mailto:hello@example.com">hello@example.com ↗</a></div></section>
+              </div>
+            </section>`,
+        },
+      };
+
+      const order = ['a', 'b', 'c'];
+      const key = new URLSearchParams(window.location.search).get('variant');
+      let current = order.includes(key) ? key : 'a';
+      const app = document.getElementById('app');
+      const variantKey = document.getElementById('variant-key');
+      const variantName = document.getElementById('variant-name');
+
+      function render(next, updateUrl = true) {
+        current = next;
+        app.innerHTML = variants[current].render();
+        variantKey.textContent = variants[current].key;
+        variantName.textContent = variants[current].name;
+        document.title = `${variants[current].name} · Mobile Systems Lab Prototype`;
+        if (updateUrl) history.replaceState({}, '', `?variant=${current}`);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+
+      function cycle(delta) {
+        const index = (order.indexOf(current) + delta + order.length) % order.length;
+        render(order[index]);
+      }
+
+      document.getElementById('previous').addEventListener('click', () => cycle(-1));
+      document.getElementById('next').addEventListener('click', () => cycle(1));
+      document.addEventListener('keydown', (event) => {
+        const target = event.target;
+        if (target.matches('input, textarea, [contenteditable="true"]')) return;
+        if (event.key === 'ArrowLeft') cycle(-1);
+        if (event.key === 'ArrowRight') cycle(1);
+      });
+      render(current, false);
+    </script>
+  </body>
+</html>
