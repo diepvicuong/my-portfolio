@@ -4,7 +4,7 @@
 - Status: `open`
 - Parent: [Chart the Senior Mobile Engineer portfolio direction](./0001-senior-mobile-portfolio-direction.md)
 - Assignee:
-- Blocked by: [Create the GitHub repository](./0010-create-github-repository.md)
+- Blocked by: none
 
 ## Question
 
